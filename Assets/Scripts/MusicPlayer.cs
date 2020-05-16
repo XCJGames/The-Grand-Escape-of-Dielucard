@@ -18,6 +18,7 @@ public class MusicPlayer : MonoBehaviour
         else
         {
             audioSource.volume = 0.8f;
+            PlayerPrefsController.SetMasterVolume(0.8f);
         }
     }
 

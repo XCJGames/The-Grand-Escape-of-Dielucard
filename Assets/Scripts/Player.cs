@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpSpeed = 3f;
 
     [SerializeField] Transform attackPoint;
-    [SerializeField] int attackDamage = 50;
+    [SerializeField] float attackDamage = 50;
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] float attackRate = 2f;
     float nextAttackTime = 0f;
@@ -31,6 +31,14 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        float difficulty = PlayerPrefsController.GetDifficulty();
+        if(difficulty != 0)
+        {
+            difficulty *= -2;
+            difficulty /= 10;
+            difficulty += 1;
+            attackDamage *= difficulty;
+        }
     }
 
     private void OnEnable() => controls.Player.Enable();
@@ -88,7 +96,7 @@ public class Player : MonoBehaviour
         // Damage first enemy
         if (hitEnemies.Length > 0)
         {
-            hitEnemies[0].GetComponent<Health>().RemoveHealth(attackDamage);
+            hitEnemies[0].GetComponent<Health>().RemoveHealth(Mathf.RoundToInt(attackDamage));
         }
     }
 
