@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        Debug.Log("input: " + controls.Player.Move.ReadValue<float>());
         var movementInput = controls.Player.Move.ReadValue<float>();
         if (movementInput != 0)
         {
