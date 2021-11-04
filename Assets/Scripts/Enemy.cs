@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);
+        transform.localScale = new Vector2(-Mathf.Sign(myRigidBody.velocity.x), 1f);
     }
 
     public void SetMovementSpeed(float speed)
