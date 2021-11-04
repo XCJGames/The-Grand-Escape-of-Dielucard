@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         AudioSource.PlayClipAtPoint(
             attackSFX,
             Camera.main.transform.position,
-            PlayerPrefsController.GetMasterVolume());
+            PlayerPrefsManager.GetMasterVolume());
     }
 
     public void StrikePlayer()

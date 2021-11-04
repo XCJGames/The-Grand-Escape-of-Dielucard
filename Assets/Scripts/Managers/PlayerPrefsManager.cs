@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPrefsController : MonoBehaviour
+public class PlayerPrefsManager : MonoBehaviour
 {
     const string MASTER_VOLUME_KEY = "master volume";
     const string DIFFICULTY_KEY = "difficulty";

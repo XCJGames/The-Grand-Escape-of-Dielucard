@@ -6,20 +6,22 @@ public class Exit : MonoBehaviour
 {
     [SerializeField] Sprite openDoor;
     [SerializeField] AudioClip openDoorSound;
+    [SerializeField] LevelManager.Scenes nextLevel;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Player>())
+        if (other.TryGetComponent<Player>(out var player))
         {
-            GameSession.Instance.SetHealthAtStartOfLevel(
-                other.GetComponent<Health>().GetHealth());
-            other.GetComponent<Player>().enabled = false;
+            /*GameManager.Instance.SetHealthAtStartOfLevel(
+                other.GetComponent<Health>().GetHealth());*/,
+            player.IdleAnimation();
+            player.enabled = false;
             AudioSource.PlayClipAtPoint(
                     openDoorSound,
                     Camera.main.transform.position,
-                    PlayerPrefsController.GetMasterVolume());
+                    PlayerPrefsManager.GetMasterVolume());
             GetComponent<SpriteRenderer>().sprite = openDoor;
-            LevelLoader.Instance.Transition();
+            LevelManager.Instance.LoadScene(nextLevel);
         }
     }
 }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSession : Singleton<GameSession>
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] int healthAtStartOfLevel;
-    private void Awake()
+    private void Start()
     {
-        healthAtStartOfLevel -= Mathf.RoundToInt(PlayerPrefsController.GetDifficulty());
+        healthAtStartOfLevel -= Mathf.RoundToInt(PlayerPrefsManager.GetDifficulty());
     }
 
     public int GetHealthAtStartOfLevel()
@@ -22,12 +22,12 @@ public class GameSession : Singleton<GameSession>
 
     public void RestartLevel()
     {
-        LevelLoader.Instance.LoadSameScene();
+        LevelManager.Instance.LoadSameScene();
     }
 
     public void RestartGame()
     {
-        LevelLoader.Instance.LoadFirstLevel();
+        LevelManager.Instance.LoadScene(LevelManager.Scenes.Level1);
         Destroy(gameObject);
     }
 }

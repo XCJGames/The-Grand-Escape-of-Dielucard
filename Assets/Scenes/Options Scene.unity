@@ -1075,7 +1075,7 @@ Transform:
   - {fileID: 1789320932}
   - {fileID: 234879272}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467918401
 GameObject:
@@ -5104,79 +5104,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066341629}
   m_CullTransparentMesh: 0
---- !u!1001 &3222191413976844662
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 824275335, guid: 6cd4d33770b81d0409fceb605919500e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.82916236
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0252591
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -14.936523
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388140, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222191414201388143, guid: 6cd4d33770b81d0409fceb605919500e,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelLoader
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6cd4d33770b81d0409fceb605919500e, type: 3}
 --- !u!1001 &6244576289698176134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5187,7 +5114,7 @@ PrefabInstance:
     - target: {fileID: 6244576288411727594, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6244576288411727594, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
@@ -5242,13 +5169,23 @@ PrefabInstance:
     - target: {fileID: 6244576288411727596, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
       propertyPath: m_Name
-      value: Options Manager
+      value: Options Controller
       objectReference: {fileID: 0}
     - target: {fileID: 6244576288411727597, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 989779572}
+    - target: {fileID: 6244576288411727597, guid: e0933b57f8f61b5478edd95312fdc0bb,
+        type: 3}
+      propertyPath: defaultButton
+      value: 
+      objectReference: {fileID: 1508877642}
+    - target: {fileID: 6244576288411727597, guid: e0933b57f8f61b5478edd95312fdc0bb,
+        type: 3}
+      propertyPath: mainMenuButton
+      value: 
+      objectReference: {fileID: 1122759598}
     - target: {fileID: 6244576288411727597, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
       propertyPath: difficultySlider

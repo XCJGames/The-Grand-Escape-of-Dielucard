@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        float difficulty = PlayerPrefsController.GetDifficulty();
+        float difficulty = PlayerPrefsManager.GetDifficulty();
         if(difficulty != 0)
         {
             difficulty *= -2;
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         AudioSource.PlayClipAtPoint(
             attackSFX,
             Camera.main.transform.position,
-            PlayerPrefsController.GetMasterVolume());
+            PlayerPrefsManager.GetMasterVolume());
     }
 
     public void StrikeEnemies()
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(
                 jumpSFX,
                 Camera.main.transform.position,
-                PlayerPrefsController.GetMasterVolume());
+                PlayerPrefsManager.GetMasterVolume());
         }
         ChangeJumpingFallingAnimation(isTouchingGround);
     }
@@ -176,5 +176,9 @@ public class Player : MonoBehaviour
     {
         if (movementInput < 0) transform.localRotation = Quaternion.Euler(0, 180, 0);
         else transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+    public void IdleAnimation()
+    {
+        animator.SetBool("Running", false);
     }
 }

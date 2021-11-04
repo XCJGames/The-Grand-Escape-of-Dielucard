@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicPlayer : Singleton<MusicPlayer>
+public class MusicManager : Singleton<MusicManager>
 {
     AudioSource audioSource;
 
@@ -10,14 +10,14 @@ public class MusicPlayer : Singleton<MusicPlayer>
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (PlayerPrefsController.CheckIfPrefsExist())
+        if (PlayerPrefsManager.CheckIfPrefsExist())
         {
-            audioSource.volume = PlayerPrefsController.GetMasterVolume();
+            audioSource.volume = PlayerPrefsManager.GetMasterVolume();
         }
         else
         {
             audioSource.volume = 0.8f;
-            PlayerPrefsController.SetMasterVolume(0.8f);
+            PlayerPrefsManager.SetMasterVolume(0.8f);
         }
     }
 

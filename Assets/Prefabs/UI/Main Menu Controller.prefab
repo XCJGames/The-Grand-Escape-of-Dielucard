@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6244576288411727596
+--- !u!1 &3772362601280455147
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6244576288411727594}
-  - component: {fileID: 6244576288411727597}
+  - component: {fileID: 8875404243633229009}
+  - component: {fileID: 6845471545282414344}
   m_Layer: 0
-  m_Name: Options Manager
+  m_Name: Main Menu Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6244576288411727594
+--- !u!4 &8875404243633229009
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6244576288411727596}
+  m_GameObject: {fileID: 3772362601280455147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7793301, y: 0.6903057, z: -15.212798}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6244576288411727597
+--- !u!114 &6845471545282414344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6244576288411727596}
+  m_GameObject: {fileID: 3772362601280455147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfa0ed1a290c4b41a0e7720900fb4dc, type: 3}
+  m_Script: {fileID: 11500000, guid: f169001f187b65148bd0cd16561e0a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
-  difficultySlider: {fileID: 0}
-  defaultVolume: 0.8
-  defaultDifficulty: 0
-  musicPlayer: {fileID: 0}

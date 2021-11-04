@@ -15,8 +15,8 @@ public class Health : MonoBehaviour
     {
         if (GetComponent<Player>())
         {
-            currentHealth = GameSession.Instance.GetHealthAtStartOfLevel();
-            maxHealth -= Mathf.RoundToInt(PlayerPrefsController.GetDifficulty());
+            currentHealth = GameManager.Instance.GetHealthAtStartOfLevel();
+            maxHealth -= Mathf.RoundToInt(PlayerPrefsManager.GetDifficulty());
         }
         else
         {
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
                 AudioSource.PlayClipAtPoint(
                     hurtSFX,
                     Camera.main.transform.position,
-                    PlayerPrefsController.GetMasterVolume());
+                    PlayerPrefsManager.GetMasterVolume());
             }
         }
     }
@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
             AudioSource.PlayClipAtPoint(
                 deathSFX,
                 Camera.main.transform.position,
-                PlayerPrefsController.GetMasterVolume());
+                PlayerPrefsManager.GetMasterVolume());
         }
     }
 
@@ -90,7 +90,7 @@ public class Health : MonoBehaviour
     private IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(2f);
-        GameSession.Instance.RestartLevel();
+        GameManager.Instance.RestartLevel();
     }
 
     public void RecoverHealth(int amount)
