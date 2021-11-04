@@ -15,15 +15,7 @@ public class Health : MonoBehaviour
     {
         if (GetComponent<Player>())
         {
-            GameSession[] gameSessions = FindObjectsOfType<GameSession>();
-            currentHealth = gameSessions[0].GetHealthAtStartOfLevel();
-            for(int i = 1; i < FindObjectsOfType<GameSession>().Length; i++)
-            {
-                if(currentHealth > gameSessions[i].GetHealthAtStartOfLevel())
-                {
-                    currentHealth = gameSessions[i].GetHealthAtStartOfLevel();
-                }
-            }
+            currentHealth = GameSession.Instance.GetHealthAtStartOfLevel();
             maxHealth -= Mathf.RoundToInt(PlayerPrefsController.GetDifficulty());
         }
         else
@@ -98,7 +90,7 @@ public class Health : MonoBehaviour
     private IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(2f);
-        FindObjectOfType<GameSession>().RestartLevel();
+        GameSession.Instance.RestartLevel();
     }
 
     public void RecoverHealth(int amount)

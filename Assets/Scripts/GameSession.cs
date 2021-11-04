@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSession : MonoBehaviour
+public class GameSession : Singleton<GameSession>
 {
     [SerializeField] int healthAtStartOfLevel;
     private void Awake()
     {
-        if(FindObjectsOfType<GameSession>().Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
         healthAtStartOfLevel -= Mathf.RoundToInt(PlayerPrefsController.GetDifficulty());
     }
 
@@ -30,12 +22,12 @@ public class GameSession : MonoBehaviour
 
     public void RestartLevel()
     {
-        FindObjectOfType<LevelLoader>().LoadSameScene();
+        LevelLoader.Instance.LoadSameScene();
     }
 
     public void RestartGame()
     {
-        FindObjectOfType<LevelLoader>().LoadFirstLevel();
+        LevelLoader.Instance.LoadFirstLevel();
         Destroy(gameObject);
     }
 }

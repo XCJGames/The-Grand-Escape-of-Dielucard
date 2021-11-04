@@ -11,7 +11,7 @@ public class Exit : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            FindObjectOfType<GameSession>().SetHealthAtStartOfLevel(
+            GameSession.Instance.SetHealthAtStartOfLevel(
                 other.GetComponent<Health>().GetHealth());
             other.GetComponent<Player>().enabled = false;
             AudioSource.PlayClipAtPoint(
@@ -19,7 +19,7 @@ public class Exit : MonoBehaviour
                     Camera.main.transform.position,
                     PlayerPrefsController.GetMasterVolume());
             GetComponent<SpriteRenderer>().sprite = openDoor;
-            FindObjectOfType<LevelLoader>().Transition();
+            LevelLoader.Instance.Transition();
         }
     }
 }

@@ -23,7 +23,7 @@ public class OptionsController : MonoBehaviour
             volumeSlider.value = defaultVolume;
             difficultySlider.value = defaultDifficulty;
         }
-        musicPlayer = FindObjectOfType<MusicPlayer>();
+        musicPlayer = MusicPlayer.Instance;
     }
 
     // Update is called once per frame
@@ -49,6 +49,6 @@ public class OptionsController : MonoBehaviour
     {
         PlayerPrefsController.SetMasterVolume(volumeSlider.value);
         PlayerPrefsController.SetDifficulty(difficultySlider.value);
-        FindObjectOfType<LevelLoader>().LoadMainMenu();
+        LevelLoader.Instance.LoadMainMenu();
     }
 }

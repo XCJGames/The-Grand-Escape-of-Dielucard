@@ -24,7 +24,10 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip attackSFX;
     [SerializeField] AudioClip jumpSFX;
 
-    private void Awake() => controls = new PlayerControls();
+    private void Awake()
+    {
+        controls = new PlayerControls();
+    }
     private void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         if (controls.Player.Attack.triggered && Time.time >= nextAttackTime)
         {

@@ -5242,7 +5242,7 @@ PrefabInstance:
     - target: {fileID: 6244576288411727596, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}
       propertyPath: m_Name
-      value: Options Controller
+      value: Options Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6244576288411727597, guid: e0933b57f8f61b5478edd95312fdc0bb,
         type: 3}

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicPlayer : MonoBehaviour
+public class MusicPlayer : Singleton<MusicPlayer>
 {
     AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetUpSingleton();
         audioSource = GetComponent<AudioSource>();
         if (PlayerPrefsController.CheckIfPrefsExist())
         {
@@ -19,19 +18,6 @@ public class MusicPlayer : MonoBehaviour
         {
             audioSource.volume = 0.8f;
             PlayerPrefsController.SetMasterVolume(0.8f);
-        }
-    }
-
-    private void SetUpSingleton()
-    {
-        int numberMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
-        if (numberMusicPlayers > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
         }
     }
 

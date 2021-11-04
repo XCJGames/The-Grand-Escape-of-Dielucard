@@ -24,19 +24,19 @@ public class PauseController : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
-        FindObjectOfType<GameSession>().RestartLevel();
+        GameSession.Instance.RestartLevel();
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        FindObjectOfType<GameSession>().RestartGame();
+        GameSession.Instance.RestartGame();
     }
 
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        Destroy(FindObjectOfType<GameSession>());
-        FindObjectOfType<LevelLoader>().LoadMainMenu();
+        Destroy(GameSession.Instance.gameObject);
+        LevelLoader.Instance.LoadMainMenu();
     }
 }

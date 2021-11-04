@@ -5,19 +5,27 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 1f;
-    Rigidbody2D myRigidBody;
-    Animator animator;
+    [SerializeField] 
+    private float moveSpeed = 1f;
 
-    [SerializeField] Transform attackPoint;
-    [SerializeField] int attackDamage = 1;
-    [SerializeField] float attackRange = 0.5f;
-    [SerializeField] float attackRate = 0.75f;
-    float nextAttackTime = 0f;
+    [Header("Attack properties")]
+    [SerializeField] 
+    private Transform attackPoint;
+    [SerializeField] 
+    private int attackDamage = 1;
+    [SerializeField] 
+    private float attackRange = 0.5f;
+    [SerializeField] 
+    private float attackRate = 0.75f;
+    [SerializeField] 
+    private AudioClip attackSFX;
+    [SerializeField] 
+    private BoxCollider2D boxCollider;
 
-    [SerializeField] AudioClip attackSFX;
+    private Rigidbody2D myRigidBody;
+    private Animator animator;
+    private float nextAttackTime = 0f;
 
-    [SerializeField] BoxCollider2D boxCollider;
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -36,7 +44,8 @@ public class Enemy : MonoBehaviour
         if (isTouchingPlayer)
         {
             SetMovementSpeed(0f);
-            myRigidBody.velocity = new Vector2(0f, 0f);
+            //myRigidBody.velocity = new Vector2(0f, 0f);
+            myRigidBody.velocity = Vector2.zero;
             animator.SetBool("Walking", false);
             if (Time.time >= nextAttackTime)
             {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6244576288411727594}
   - component: {fileID: 6244576288411727597}
   m_Layer: 0
-  m_Name: Options Controller
+  m_Name: Options Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
