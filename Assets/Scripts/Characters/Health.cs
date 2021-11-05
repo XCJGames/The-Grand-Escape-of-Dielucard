@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth;
+    [Header("Parameters")]
+    [SerializeField] 
+    private int maxHealth = 100;
+    [SerializeField] 
+    private int currentHealth;
 
-    [SerializeField] AudioClip deathSFX;
-    [SerializeField] AudioClip hurtSFX;
+    [Header("SFX")]
+    [SerializeField] 
+    private AudioClip deathSFX;
+    [SerializeField] 
+    private AudioClip hurtSFX;
+
+    public int CurrentHealth { get => currentHealth; }
 
     void Start()
     {
@@ -23,12 +31,6 @@ public class Health : MonoBehaviour
             currentHealth = maxHealth;
         }
     }
-
-    public int GetHealth()
-    {
-        return currentHealth;
-    }
-
     public void RemoveHealth(int amount)
     {
         currentHealth -= amount;
@@ -54,7 +56,11 @@ public class Health : MonoBehaviour
             }
         }
     }
-
+    public void RecoverHealth(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+    }
     private void Die()
     {
         Animator animator = GetComponent<Animator>();
@@ -71,31 +77,26 @@ public class Health : MonoBehaviour
                 PlayerPrefsManager.GetMasterVolume());
         }
     }
-
     private void DisableThisCharacter()
     {
         switch (gameObject.layer)
         {
             case 9:
                 GetComponent<Player>().enabled = false;
+                GameManager.Instance.IncreaseDeathCounter();
                 StartCoroutine(RestartLevel());
                 break;
             case 11:
                 GetComponent<Enemy>().enabled = false;
+                GameManager.Instance.IncreaseEnemyCounter();
                 break;
         }
         enabled = false;
     }
-
     private IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(2f);
         GameManager.Instance.RestartLevel();
     }
 
-    public void RecoverHealth(int amount)
-    {
-        currentHealth += amount;
-        if (currentHealth > maxHealth) currentHealth = maxHealth;
-    }
 }

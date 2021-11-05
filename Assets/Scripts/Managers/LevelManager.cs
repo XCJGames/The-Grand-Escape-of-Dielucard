@@ -29,29 +29,14 @@ public class LevelManager : Singleton<LevelManager>
             StartCoroutine(WaitAndLoad(scene));
         }
     }
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-    public void LoadSameScene()
-    {
-        LoadScene((Scenes)SceneManager.GetActiveScene().buildIndex);
-    }
-    public void EndOfTransition()
-    {
-        isTransitioning = false;
-    }
+    public void QuitGame() => Application.Quit();
+    public void LoadSameScene() => LoadScene((Scenes)SceneManager.GetActiveScene().buildIndex);
+    public void EndOfTransition() => isTransitioning = false;
     private IEnumerator WaitAndLoad(Scenes scene)
     {
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene((int)scene);
     }
-    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
-    {
-        Transition();
-    }
-    private void Transition()
-    {
-        GetComponent<Animator>().SetTrigger("Transition");
-    }
+    private void OnSceneLoad(Scene scene, LoadSceneMode mode) => Transition();
+    private void Transition() => GetComponent<Animator>().SetTrigger("Transition");
 }

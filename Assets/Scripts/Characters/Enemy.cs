@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] 
     private float moveSpeed = 1f;
 
-    [Header("Attack properties")]
+    [Header("Attack")]
     [SerializeField] 
     private Transform attackPoint;
     [SerializeField] 
@@ -26,18 +27,37 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private float nextAttackTime = 0f;
 
-    void Start()
+    private void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-
-    void Update()
+    private void Update()
     {
         Move();
         CheckForPlayer();
     }
-
+    public void PlayAttackSFX()
+    {
+        AudioSource.PlayClipAtPoint(
+            attackSFX,
+            Camera.main.transform.position,
+            PlayerPrefsManager.GetMasterVolume());
+    }
+    public void StrikePlayer()
+    {
+        // Detect player in range of attack
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            attackRange,
+            LayerMask.GetMask("Player"));
+        // If player hitted, deal damage
+        if(hitPlayer.Length > 0)
+        {
+            hitPlayer[0].GetComponent<Health>().RemoveHealth(attackDamage);
+        }
+    }
+    public void SetMovementSpeed(float speed) => moveSpeed = speed;
     private void CheckForPlayer()
     {
         bool isTouchingPlayer = boxCollider.IsTouchingLayers(LayerMask.GetMask("Player"));
@@ -55,29 +75,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    public void PlayAttackSFX()
-    {
-        AudioSource.PlayClipAtPoint(
-            attackSFX,
-            Camera.main.transform.position,
-            PlayerPrefsManager.GetMasterVolume());
-    }
-
-    public void StrikePlayer()
-    {
-        // Detect player in range of attack
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(
-            attackPoint.position,
-            attackRange,
-            LayerMask.GetMask("Player"));
-        // If player hitted, deal damage
-        if(hitPlayer.Length > 0)
-        {
-            hitPlayer[0].GetComponent<Health>().RemoveHealth(attackDamage);
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (attackPoint != null)
@@ -85,7 +82,6 @@ public class Enemy : MonoBehaviour
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
     }
-
     private void OnDisable()
     {
         SetMovementSpeed(0f);
@@ -93,7 +89,6 @@ public class Enemy : MonoBehaviour
         boxCollider.enabled = false;
         GetComponent<CapsuleCollider2D>().enabled = false;
     }
-
     private void Move()
     {
         bool isTouchingPlayer = boxCollider.IsTouchingLayers(LayerMask.GetMask("Player"));
@@ -111,19 +106,8 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    private bool IsFacingRight() => transform.localScale.x > 0;
+    private void OnTriggerExit2D(Collider2D other) 
+        => transform.localScale = new Vector2(-Mathf.Sign(myRigidBody.velocity.x), 1f);
 
-    private bool IsFacingRight()
-    {
-        return transform.localScale.x > 0;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        transform.localScale = new Vector2(-Mathf.Sign(myRigidBody.velocity.x), 1f);
-    }
-
-    public void SetMovementSpeed(float speed)
-    {
-        moveSpeed = speed;
-    }
 }

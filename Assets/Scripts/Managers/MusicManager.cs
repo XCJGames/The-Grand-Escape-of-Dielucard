@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager : Singleton<MusicManager>
 {
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,5 @@ public class MusicManager : Singleton<MusicManager>
             PlayerPrefsManager.SetMasterVolume(0.8f);
         }
     }
-
-    public void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
-    }
+    public void SetVolume(float volume) => audioSource.volume = volume;
 }

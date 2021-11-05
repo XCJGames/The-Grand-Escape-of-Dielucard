@@ -5,7 +5,6 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T instance;
-    public static bool isQuitting;
 
     private void Awake()
     {
@@ -19,7 +18,6 @@ public class Singleton<T> : MonoBehaviour where T : Component
             Destroy(gameObject);
         }
     }
-
     public static T Instance
     {
         get

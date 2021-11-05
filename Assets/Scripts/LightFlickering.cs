@@ -8,7 +8,7 @@ public class LightFlickering : MonoBehaviour
     [SerializeField]
     private float flickeringInterval = 0.5f;
     private float timer;
-    private Light2D light;
+    private Light2D lightComponent;
     private float lightIntensity;
     private void Awake()
     {
@@ -16,8 +16,8 @@ public class LightFlickering : MonoBehaviour
     }
     private void Start()
     {
-        light = GetComponent<Light2D>();
-        lightIntensity = light.intensity;
+        lightComponent = GetComponent<Light2D>();
+        lightIntensity = lightComponent.intensity;
     }
     private void Update()
     {
@@ -26,7 +26,7 @@ public class LightFlickering : MonoBehaviour
         {
             float min = lightIntensity * 0.8f;
             float max = lightIntensity * 1.2f;
-            light.intensity = Random.Range(min, max);
+            lightComponent.intensity = Random.Range(min, max);
             timer = flickeringInterval;
         }
     }

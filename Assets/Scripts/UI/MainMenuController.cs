@@ -19,8 +19,9 @@ public class MainMenuController : MonoBehaviour
         optionsButton.onClick.AddListener(LoadOptionsMenu);
         creditsButton.onClick.AddListener(LoadCreditsMenu);
         quitButton.onClick.AddListener(QuitGame);
+        GameManager.Instance.StopTimer();
     }
-    private void StartGame() => LevelManager.Instance.LoadScene(LevelManager.Scenes.Level1);
+    private void StartGame() => GameManager.Instance.RestartGame();
     private void LoadOptionsMenu() => LevelManager.Instance.LoadScene(LevelManager.Scenes.Options);
     private void LoadCreditsMenu() => LevelManager.Instance.LoadScene(LevelManager.Scenes.Credits);
     private void QuitGame() => LevelManager.Instance.QuitGame();

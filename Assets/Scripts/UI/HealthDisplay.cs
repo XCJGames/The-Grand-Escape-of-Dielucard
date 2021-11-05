@@ -5,22 +5,22 @@ using TMPro;
 
 public class HealthDisplay : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] Health playerHealth;
+    [SerializeField] 
+    private TextMeshProUGUI healthText;
+    [SerializeField] 
+    private Health playerHealth;
 
     void Start()
     {
         healthText = GetComponent<TextMeshProUGUI>();
-        playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
+        if (playerHealth == null)
+        {
+            playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
+        }
         UpdateHealthDisplay();
     }
 
-    private void Update()
-    {
-        UpdateHealthDisplay();
-    }
-    public void UpdateHealthDisplay()
-    {
-        healthText.text = playerHealth.GetHealth().ToString();
-    }
+    private void Update() => UpdateHealthDisplay();
+    public void UpdateHealthDisplay() 
+        => healthText.text = playerHealth.CurrentHealth.ToString();
 }

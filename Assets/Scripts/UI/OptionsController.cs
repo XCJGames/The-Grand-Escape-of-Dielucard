@@ -6,17 +6,16 @@ using UnityEngine.UI;
 public class OptionsController : MonoBehaviour
 {
     [SerializeField] 
-    Slider volumeSlider, difficultySlider;
+    private Slider volumeSlider, difficultySlider;
     [SerializeField] 
-    float defaultVolume = 0.8f;
+    private float defaultVolume = 0.8f;
     [SerializeField] 
-    float defaultDifficulty = 0;
+    private float defaultDifficulty = 0;
     [SerializeField]
-    Button mainMenuButton;
+    private Button mainMenuButton;
     [SerializeField]
-    Button defaultButton;
+    private Button defaultButton;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefsManager.CheckIfPrefsExist())
@@ -32,19 +31,13 @@ public class OptionsController : MonoBehaviour
         mainMenuButton.onClick.AddListener(SaveAndExit);
         defaultButton.onClick.AddListener(SetDefaults);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        MusicManager.Instance.SetVolume(volumeSlider.value);
-    }
-
+    void Update() 
+        => MusicManager.Instance.SetVolume(volumeSlider.value);
     private void SetDefaults()
     {
         volumeSlider.value = defaultVolume;
         difficultySlider.value = defaultDifficulty;
     }
-
     private void SaveAndExit()
     {
         PlayerPrefsManager.SetMasterVolume(volumeSlider.value);
